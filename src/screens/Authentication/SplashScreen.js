@@ -3,7 +3,7 @@ import { Image, StatusBar, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
 import { useNavigation } from '@react-navigation/native';
 
-const FactHubLogo = require('../../asserts/images/Facthub-Logo.png');
+const FactHubLogo = require('../../asserts/images/Facthub-Logo.png'); 
 
 const SplashScreen = () => {
   const navigation = useNavigation();

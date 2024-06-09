@@ -1,5 +1,11 @@
-import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import { useColorScheme, StatusBar } from 'react-native';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  ReactNode,
+} from 'react';
+import {useColorScheme, StatusBar, Platform} from 'react-native';
 import database from '../model/database';
 import Theme from '../model/Theme';
 
@@ -41,14 +47,14 @@ const themes: Record<ThemeType, ThemeConfig> = {
   light: lightTheme,
   dark: darkTheme,
   eyeProtection: eyeProtectionTheme,
-  auto: lightTheme, // default fallback theme for auto
+  auto: lightTheme,
 };
 
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({children}) => {
   const [theme, setTheme] = useState<ThemeType>('auto');
   const colorScheme = useColorScheme();
 
@@ -56,9 +62,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const loadTheme = async () => {
       try {
         const themeCollection = database.collections.get<Theme>('themes');
-        const savedTheme = await themeCollection.query().fetch();
-        if (savedTheme.length > 0) {
-          setTheme(savedTheme[0].theme as ThemeType);
+        if (!themeCollection) {
+          console.error('Theme collection not found in database');
+          return;
+        }
+
+        const savedThemes = await themeCollection.query().fetch();
+        if (savedThemes.length > 0) {
+          setTheme(savedThemes[0]?.theme as ThemeType);
         }
       } catch (error) {
         console.error('Error loading theme:', error);
@@ -69,31 +80,26 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   const toggleTheme = async (selectedTheme: ThemeType) => {
     try {
-      console.log('Toggle Theme Called with:', selectedTheme);
       setTheme(selectedTheme);
 
-      await database.action(async () => {
-        const themeCollection = database.collections.get<Theme>('themes');
-        console.log('Theme Collection:', themeCollection);
+      const themeCollection = database.collections.get<Theme>('themes');
+      if (!themeCollection) {
+        console.error('Theme collection not found in database');
+        return;
+      }
 
+      await database.write(async () => {
         const existingThemes = await themeCollection.query().fetch();
-        console.log('Existing Themes:', existingThemes);
-
         if (existingThemes.length > 0) {
-          console.log('Updating Existing Theme');
-          const themeToUpdate = existingThemes[0];
-          await themeToUpdate.update((record) => {
-            (record as Theme).theme = selectedTheme;
+          await existingThemes[0].update(themeRecord => {
+            themeRecord.theme = selectedTheme;
           });
         } else {
-          console.log('Creating New Theme');
-          await themeCollection.create((record) => {
-            (record as Theme).theme = selectedTheme;
+          await themeCollection.create(themeRecord => {
+            themeRecord.theme = selectedTheme;
           });
         }
       });
-
-      console.log('Theme toggled successfully to:', selectedTheme);
     } catch (error) {
       console.error('Error toggling theme:', error);
     }
@@ -110,11 +116,13 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   useEffect(() => {
     const themeConfig = getTheme();
     StatusBar.setBarStyle(themeConfig.statusBarStyle);
-    StatusBar.setBackgroundColor(themeConfig.backgroundColor);
+    if (Platform.OS === 'android') {
+      StatusBar.setBackgroundColor(themeConfig.backgroundColor);
+    }
   }, [theme, colorScheme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, getTheme }}>
+    <ThemeContext.Provider value={{theme, toggleTheme, getTheme}}>
       {children}
     </ThemeContext.Provider>
   );
