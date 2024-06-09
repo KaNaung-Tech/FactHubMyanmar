@@ -6,6 +6,7 @@ export default class Post extends Model {
 
   @field('title') title!: string;
   @field('content') content!: string;
+  @date('published_at') publishedAt!: number;
   @date('date') date!: number;
   @field('author') author!: string;
 }

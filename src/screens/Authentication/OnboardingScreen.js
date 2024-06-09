@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -7,84 +7,55 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
-import {useTheme} from '../../configs/ThemeContext';
+import { useTheme } from '../../configs/ThemeContext';
+import { fetchCategories } from '../../services/api';
 
-const categories = [
-  'Article',
-  'Analysis',
-  'Astronomy',
-  'Astrophotographing',
-  'Chemistry',
-  'Classic Children’s Literature',
-  'Cosmos',
-  'Did You Know',
-  'Editorial',
-  'Environmental',
-  'Evolution',
-  'Fact Check',
-  'False News',
-  'First Language Acquisition',
-  'Geography',
-  'General Science',
-  'Health',
-  'History',
-  'How things work',
-  'How to',
-  'Impulse Momentum',
-  'Linguistics',
-  'Literature',
-  'Literature Review',
-  'Mathematics',
-  'Media Information Literacy',
-  'Medical',
-  'Misleading',
-  'Myth',
-  'News',
-  'Nostalgia',
-  'On this day',
-  'Philosophy',
-  'Myanmar',
-  'English',
-];
-
-const OnboardingScreen = ({navigation}) => {
-  const {getTheme} = useTheme();
+const OnboardingScreen = ({ navigation }) => {
+  const { getTheme } = useTheme();
   const theme = getTheme();
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const isButtonEnabled = selectedCategories.length >= 3;
 
   useEffect(() => {
     StatusBar.setBarStyle(theme.statusBarStyle);
     StatusBar.setBackgroundColor(theme.backgroundColor);
+
+    // Fetch categories from API
+    const loadCategories = async () => {
+      const categoriesData = await fetchCategories();
+      setCategories(categoriesData);
+    };
+
+    loadCategories();
   }, [theme]);
 
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const isButtonEnabled = selectedCategories.length >= 3;
-
   const toggleCategory = category => {
-    if (selectedCategories.includes(category)) {
+    if (selectedCategories.includes(category.name)) {
       setSelectedCategories(
-        selectedCategories.filter(item => item !== category),
+        selectedCategories.filter(item => item !== category.name),
       );
     } else {
-      setSelectedCategories([...selectedCategories, category]);
+      setSelectedCategories([...selectedCategories, category.name]);
     }
   };
 
-  const isCategorySelected = category => selectedCategories.includes(category);
+  const isCategorySelected = category => selectedCategories.includes(category.name);
 
   const renderCategory = category => (
     <TouchableOpacity
-      key={category}
+      key={category.id}
       style={[
         styles.categoryButton,
         isCategorySelected(category) && styles.categoryButtonSelected,
       ]}
       onPress={() => toggleCategory(category)}>
-      <Text style={styles.categoryText}>{category}</Text>
+      <Text style={styles.categoryText}>{category.name}</Text>
     </TouchableOpacity>
   );
 
   return (
-    <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
+    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <Text style={[styles.title, { color: theme.textColor }]}>Let's know what you like</Text>
       <Text style={[styles.subtitle, { color: theme.textColor }]}>Choose three or more</Text>
       <ScrollView
@@ -100,7 +71,7 @@ const OnboardingScreen = ({navigation}) => {
           styles.customButtonContainer,
           isButtonEnabled ? styles.buttonEnabled : styles.buttonDisabled,
         ]}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('MainTabs')}
         disabled={!isButtonEnabled}>
         <Text style={[styles.customButtonText, { color: theme.textColor }]}>Next</Text>
       </TouchableOpacity>

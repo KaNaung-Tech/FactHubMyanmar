@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
 import Setting from '../../asserts/svg/Setting';
+import HomeTopTabNavigator from '../../routes/HomeTopTabNavigator';
 
 const HomeScreen = ({ navigation }) => {
   const { getTheme } = useTheme();
@@ -12,16 +13,10 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.header}>
         <Image source={require('../../asserts/images/Facthub-Logo.png')} style={styles.logo} />
         <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-          {/* <Setting name="settings-outline" size={30} color={theme.textColor} /> */}
-          <Setting/>
+          <Setting color={theme.textColor} />
         </TouchableOpacity>
       </View>
-      <ScrollView style={styles.content}>
-        <Text style={[styles.sectionTitle, { color: theme.textColor }]}>For You</Text>
-        {/* Render articles here */}
-        <Text style={[styles.sectionTitle, { color: theme.textColor }]}>Latest Update</Text>
-        {/* Render latest updates here */}
-      </ScrollView>
+      <HomeTopTabNavigator />
     </View>
   );
 };
@@ -41,14 +36,6 @@ const styles = StyleSheet.create({
     width: 100,
     height: 50,
     resizeMode: 'contain',
-  },
-  content: {
-    flex: 1,
-  },
-  sectionTitle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 10,
   },
 });
 

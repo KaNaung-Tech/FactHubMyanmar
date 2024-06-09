@@ -7,7 +7,9 @@ export const schema = appSchema({
       name: 'posts',
       columns: [
         { name: 'title', type: 'string' },
-        { name: 'body', type: 'string' },
+        { name: 'content', type: 'string' },
+        { name: 'date', type: 'number' },
+        { name: 'author', type: 'string' },
       ],
     }),
     tableSchema({
