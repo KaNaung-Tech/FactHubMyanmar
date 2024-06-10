@@ -1,11 +1,5 @@
-import React, {
-  createContext,
-  useState,
-  useContext,
-  useEffect,
-  ReactNode,
-} from 'react';
-import {useColorScheme, StatusBar, Platform} from 'react-native';
+import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
+import { useColorScheme, StatusBar, Platform, ActivityIndicator, View } from 'react-native';
 import database from '../model/database';
 import Theme from '../model/Theme';
 
@@ -54,8 +48,9 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({children}) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<ThemeType>('auto');
+  const [loading, setLoading] = useState(true);
   const colorScheme = useColorScheme();
 
   useEffect(() => {
@@ -64,6 +59,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({children}) => {
         const themeCollection = database.collections.get<Theme>('themes');
         if (!themeCollection) {
           console.error('Theme collection not found in database');
+          setLoading(false);
           return;
         }
 
@@ -73,6 +69,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({children}) => {
         }
       } catch (error) {
         console.error('Error loading theme:', error);
+      } finally {
+        setLoading(false);
       }
     };
     loadTheme();
@@ -121,8 +119,16 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({children}) => {
     }
   }, [theme, colorScheme]);
 
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme, getTheme}}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, getTheme }}>
       {children}
     </ThemeContext.Provider>
   );

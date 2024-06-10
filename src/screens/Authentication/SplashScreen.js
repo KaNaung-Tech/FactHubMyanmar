@@ -3,35 +3,31 @@ import { Image, StatusBar, StyleSheet, View } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
 import { useNavigation } from '@react-navigation/native';
 
-const FactHubLogo = require('../../asserts/images/Facthub-Logo.png'); 
+const FactHubLogo = require('../../asserts/images/Facthub-Logo.png');
 
 const SplashScreen = () => {
   const navigation = useNavigation();
-  const { theme } = useTheme();
-  const [backgroundColor, setBackgroundColor] = useState(theme.backgroundColor || '#FFFFFF'); // Default color added
+  const { theme, getTheme } = useTheme();
+  const [backgroundColor, setBackgroundColor] = useState(getTheme().backgroundColor);
 
   useEffect(() => {
-    StatusBar.setBarStyle(theme.statusBarStyle);
-    StatusBar.setBackgroundColor(backgroundColor);
+    StatusBar.setBarStyle(getTheme().statusBarStyle);
+    StatusBar.setBackgroundColor(getTheme().backgroundColor);
 
     const timeout = setTimeout(() => {
       navigation.replace('OnboardingStack');
     }, 2000);
 
     return () => clearTimeout(timeout);
-  }, [navigation, theme, backgroundColor]);
+  }, [navigation, theme]);
 
   useEffect(() => {
-    setBackgroundColor(theme.backgroundColor || '#FFFFFF'); // Default color added
+    setBackgroundColor(getTheme().backgroundColor);
   }, [theme]);
 
   return (
     <View style={[styles.container, { backgroundColor }]}>
-      <Image
-        source={FactHubLogo}
-        resizeMode="contain"
-        style={styles.logo}
-      />
+      <Image source={FactHubLogo} resizeMode="contain" style={styles.logo} />
     </View>
   );
 };

@@ -21,10 +21,14 @@ const OnboardingScreen = ({ navigation }) => {
     StatusBar.setBarStyle(theme.statusBarStyle);
     StatusBar.setBackgroundColor(theme.backgroundColor);
 
-    // Fetch categories from API
     const loadCategories = async () => {
-      const categoriesData = await fetchCategories();
-      setCategories(categoriesData);
+      try {
+        const categoriesData = await fetchCategories();
+        console.log('Categories Data:', categoriesData); // Debug log
+        setCategories(categoriesData);
+      } catch (error) {
+        console.error('Error loading categories:', error);
+      }
     };
 
     loadCategories();

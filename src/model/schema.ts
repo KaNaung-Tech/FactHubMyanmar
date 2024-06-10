@@ -18,5 +18,11 @@ export const schema = appSchema({
         { name: 'theme', type: 'string' },
       ],
     }),
+    tableSchema({
+      name: 'categories',
+      columns: [
+        { name: 'name', type: 'string' },
+      ],
+    }),
   ],
 });
