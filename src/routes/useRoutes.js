@@ -6,7 +6,7 @@ import SplashScreen from '../screens/Authentication/SplashScreen';
 import OnboardingScreen from '../screens/Authentication/OnboardingScreen';
 import SettingsScreen from '../screens/Settings/SettingsScreen';
 import TabNavigator from './TabNavigator';
-
+import CategoryDetailScreen from '../screens/Home/CategoryDetailScreen'
 const Stack = createStackNavigator();
 
 const OnboardingStack = () => (
@@ -22,6 +22,7 @@ const MainNavigator = () => (
       <Stack.Screen name="OnboardingStack" component={OnboardingStack} />
       <Stack.Screen name="MainTabs" component={TabNavigator} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} options={{ title: 'Category Detail' }} />
     </Stack.Navigator>
   </NavigationContainer>
 );

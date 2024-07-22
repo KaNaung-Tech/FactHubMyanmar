@@ -16,7 +16,7 @@ const HomeTopTabNavigator = () => {
         tabBarStyle: { backgroundColor: theme.backgroundColor },
         tabBarActiveTintColor: theme.textColor,
         tabBarInactiveTintColor: '#888888',
-        indicatorStyle: { backgroundColor: theme.textColor },
+        tabBarIndicatorStyle: { backgroundColor: '#F56200' }, 
       }}
     >
       <TopTab.Screen name="ForYou" component={ForYouScreen} options={{ title: 'For You' }} />

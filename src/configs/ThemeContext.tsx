@@ -1,5 +1,16 @@
-import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import { useColorScheme, StatusBar, Platform, ActivityIndicator, View } from 'react-native';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  ReactNode,
+} from 'react';
+import {
+  useColorScheme,
+  StatusBar,
+  Platform,
+  View,
+} from 'react-native';
 import database from '../model/database';
 import Theme from '../model/Theme';
 
@@ -9,32 +20,37 @@ interface ThemeConfig {
   backgroundColor: string;
   textColor: string;
   statusBarStyle: 'dark-content' | 'light-content';
+  buttonColor?: string;
 }
 
 interface ThemeContextProps {
   theme: ThemeType;
   toggleTheme: (selectedTheme: ThemeType) => Promise<void>;
   getTheme: () => ThemeConfig;
+  isDarkTheme: () => boolean;
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 const lightTheme: ThemeConfig = {
   backgroundColor: '#FFFFFF',
-  textColor: '#444655',
+  textColor: '#000000',
   statusBarStyle: 'dark-content',
+  buttonColor:  '#F4F4F6',
 };
 
 const darkTheme: ThemeConfig = {
   backgroundColor: '#1F2027',
   textColor: '#F9F9FA',
   statusBarStyle: 'light-content',
+  buttonColor: '#2D2F39',
 };
 
 const eyeProtectionTheme: ThemeConfig = {
   backgroundColor: '#FFFAE0',
   textColor: '#444655',
   statusBarStyle: 'dark-content',
+  buttonColor:  '#FFFCEB',
 };
 
 const themes: Record<ThemeType, ThemeConfig> = {
@@ -50,7 +66,6 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<ThemeType>('auto');
-  const [loading, setLoading] = useState(true);
   const colorScheme = useColorScheme();
 
   useEffect(() => {
@@ -59,8 +74,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         const themeCollection = database.collections.get<Theme>('themes');
         if (!themeCollection) {
           console.error('Theme collection not found in database');
-          setLoading(false);
-          return;
+          return 'auto';
         }
 
         const savedThemes = await themeCollection.query().fetch();
@@ -69,9 +83,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         }
       } catch (error) {
         console.error('Error loading theme:', error);
-      } finally {
-        setLoading(false);
       }
+      return 'auto';
     };
     loadTheme();
   }, []);
@@ -89,11 +102,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       await database.write(async () => {
         const existingThemes = await themeCollection.query().fetch();
         if (existingThemes.length > 0) {
-          await existingThemes[0].update(themeRecord => {
+          await existingThemes[0].update((themeRecord) => {
             themeRecord.theme = selectedTheme;
           });
         } else {
-          await themeCollection.create(themeRecord => {
+          await themeCollection.create((themeRecord) => {
             themeRecord.theme = selectedTheme;
           });
         }
@@ -111,6 +124,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     return themes[theme] || lightTheme;
   };
 
+  const isDarkTheme = (): boolean => {
+    const currentTheme = theme === 'auto' ? colorScheme : theme;
+    return currentTheme === 'dark';
+  };
+
   useEffect(() => {
     const themeConfig = getTheme();
     StatusBar.setBarStyle(themeConfig.statusBarStyle);
@@ -119,16 +137,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
   }, [theme, colorScheme]);
 
-  if (loading) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
-    );
-  }
-
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, getTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, getTheme, isDarkTheme }}>
       {children}
     </ThemeContext.Provider>
   );

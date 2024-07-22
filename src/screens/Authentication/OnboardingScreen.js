@@ -8,7 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
-import { fetchCategories } from '../../services/api';
+import categoriesData from '../../data/categories.json';
 
 const OnboardingScreen = ({ navigation }) => {
   const { getTheme } = useTheme();
@@ -21,17 +21,9 @@ const OnboardingScreen = ({ navigation }) => {
     StatusBar.setBarStyle(theme.statusBarStyle);
     StatusBar.setBackgroundColor(theme.backgroundColor);
 
-    const loadCategories = async () => {
-      try {
-        const categoriesData = await fetchCategories();
-        console.log('Categories Data:', categoriesData); // Debug log
-        setCategories(categoriesData);
-      } catch (error) {
-        console.error('Error loading categories:', error);
-      }
-    };
-
-    loadCategories();
+    // Sort categories alphabetically
+    const sortedCategories = categoriesData.sort((a, b) => a.name.localeCompare(b.name));
+    setCategories(sortedCategories);
   }, [theme]);
 
   const toggleCategory = category => {

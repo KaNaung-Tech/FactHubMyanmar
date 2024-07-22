@@ -19,23 +19,23 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ color }) => {
+        tabBarIcon: ({ color, focused }) => {
           let IconComponent;
           if (route.name === 'Home') {
-            IconComponent = HomeIcon;
+            IconComponent = (props) => <HomeIcon {...props} filled={focused} />;
           } else if (route.name === 'Explore') {
-            IconComponent = ExploreIcon;
+            IconComponent = (props) => <ExploreIcon {...props} filled={focused} />;
           } else if (route.name === 'Bookmark') {
-            IconComponent = BookmarkIcon;
+            IconComponent = (props) => <BookmarkIcon {...props} filled={focused} />;
           } else if (route.name === 'History') {
-            IconComponent = HistoryIcon;
+            IconComponent = (props) => <HistoryIcon {...props} filled={focused} />;
           }
           return <IconComponent color={color} />;
         },
         tabBarStyle: {
           backgroundColor: theme.backgroundColor,
         },
-        tabBarActiveTintColor: theme.textColor,
+        tabBarActiveTintColor: '#F56200',
         tabBarInactiveTintColor: '#888888',
         headerShown: false,
       })}

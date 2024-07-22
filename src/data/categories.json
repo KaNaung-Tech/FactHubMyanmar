@@ -1,0 +1,2042 @@
+[
+  {
+    "id": 7,
+    "count": 16,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/analysis/",
+    "name": "Analysis",
+    "slug": "analysis",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/7"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=7"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 36,
+    "count": 3,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/approaching-quantum-physics/",
+    "name": "Approaching Quantum Physics",
+    "slug": "approaching-quantum-physics",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/36"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=36"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "count": 132,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/article/",
+    "name": "Article",
+    "slug": "article",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/3"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=3"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "count": 28,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/astronomy/",
+    "name": "Astronomy",
+    "slug": "astronomy",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/21"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=21"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 48,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/astrophotographing/",
+    "name": "Astrophotographing",
+    "slug": "astrophotographing",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/48"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=48"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 35,
+    "count": 7,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/biology/",
+    "name": "Biology",
+    "slug": "biology",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/35"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=35"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "count": 10,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/chemistry/",
+    "name": "Chemistry",
+    "slug": "chemistry",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/16"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=16"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 29,
+    "count": 3,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/classic-childrens-literature/",
+    "name": "Classic Children’s Literature",
+    "slug": "classic-childrens-literature",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/29"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=29"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 34,
+    "count": 7,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/cosmos/",
+    "name": "Cosmos",
+    "slug": "cosmos",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/34"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=34"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 51,
+    "count": 2,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/did-you-know/",
+    "name": "Did You Know",
+    "slug": "did-you-know",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/51"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=51"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "count": 6,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/editorial/",
+    "name": "Editorial",
+    "slug": "editorial",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/20"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=20"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "count": 5,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/environmental/",
+    "name": "Environmental",
+    "slug": "environmental",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/12"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=12"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 31,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/evolution/",
+    "name": "Evolution",
+    "slug": "evolution",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/31"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=31"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "count": 26,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/fact-check/",
+    "name": "Fact Check",
+    "slug": "fact-check",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/10"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=10"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 24,
+    "count": 3,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/false-news/",
+    "name": "False News",
+    "slug": "false-news",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/24"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=24"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 39,
+    "count": 2,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/first-language-acquisition/",
+    "name": "First Language Acquisition",
+    "slug": "first-language-acquisition",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/39"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=39"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "count": 39,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/general-science/",
+    "name": "General Science",
+    "slug": "general-science",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/2"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=2"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 49,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/geography/",
+    "name": "Geography",
+    "slug": "geography",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/49"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=49"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 27,
+    "count": 2,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/heath/",
+    "name": "Health",
+    "slug": "heath",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/27"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=27"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "count": 10,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/history/",
+    "name": "History",
+    "slug": "history",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/19"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=19"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "count": 7,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/how-things-work/",
+    "name": "How things work",
+    "slug": "how-things-work",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/9"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=9"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 46,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/how-to/",
+    "name": "How to",
+    "slug": "how-to",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/46"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=46"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 43,
+    "count": 2,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/impulse-momentum/",
+    "name": "Impulse Momentum",
+    "slug": "impulse-momentum",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/43"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=43"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "count": 10,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/linguistics/",
+    "name": "Linguistics",
+    "slug": "linguistics",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/6"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=6"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "count": 9,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/literature/",
+    "name": "Literature",
+    "slug": "literature",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/8"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=8"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 32,
+    "count": 3,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/literature-review/",
+    "name": "Literature Review",
+    "slug": "literature-review",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/32"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=32"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 38,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/mathematics/",
+    "name": "Mathematics",
+    "slug": "mathematics",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/38"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=38"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 25,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/media-information-literacy/",
+    "name": "Media Information Literacy",
+    "slug": "media-information-literacy",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/25"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=25"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "count": 11,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/medical/",
+    "name": "Medical",
+    "slug": "medical",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/18"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=18"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 41,
+    "count": 2,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/misleading/",
+    "name": "Misleading",
+    "slug": "misleading",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/41"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=41"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "count": 11,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/myth/",
+    "name": "Myth",
+    "slug": "myth",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/11"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=11"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "count": 19,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/news/",
+    "name": "News",
+    "slug": "news",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/22"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=22"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 45,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/nostalgia/",
+    "name": "Nostalgia",
+    "slug": "nostalgia",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/45"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=45"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 42,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/on-this-day/",
+    "name": "On this day",
+    "slug": "on-this-day",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/42"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=42"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 23,
+    "count": 2,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/philosophy/",
+    "name": "Philosophy",
+    "slug": "philosophy",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/23"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=23"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "count": 23,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/physics/",
+    "name": "Physics",
+    "slug": "physics",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/13"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=13"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "count": 8,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/psedoscience/",
+    "name": "Psedoscience",
+    "slug": "psedoscience",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/15"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=15"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 44,
+    "count": 4,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/psycology/",
+    "name": "Psycology",
+    "slug": "psycology",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/44"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=44"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 30,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/public-education/",
+    "name": "Public Education",
+    "slug": "public-education",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/30"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=30"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 47,
+    "count": 2,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/qa/",
+    "name": "Q&amp;A",
+    "slug": "qa",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/47"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=47"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 37,
+    "count": 3,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/quantum/",
+    "name": "Quantum",
+    "slug": "quantum",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/37"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=37"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "count": 56,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/science/",
+    "name": "Science",
+    "slug": "science",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/4"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=4"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "count": 5,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/science-updates/",
+    "name": "Science Updates",
+    "slug": "science-updates",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/5"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=5"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "count": 5,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/short-article/",
+    "name": "Short Article",
+    "slug": "short-article",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/17"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=17"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 33,
+    "count": 15,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/short-fact/",
+    "name": "Short-Fact",
+    "slug": "short-fact",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/33"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=33"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 28,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/space/",
+    "name": "Space",
+    "slug": "space",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/28"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=28"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 50,
+    "count": 4,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/technology/",
+    "name": "Technology",
+    "slug": "technology",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/50"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=50"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "count": 7,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/theoretical-physics/",
+    "name": "Theoretical Physics",
+    "slug": "theoretical-physics",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/14"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=14"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 26,
+    "count": 2,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/thermodynamics/",
+    "name": "Thermodynamics",
+    "slug": "thermodynamics",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/26"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=26"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 1,
+    "count": 12,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/uncategorized/",
+    "name": "Uncategorized",
+    "slug": "uncategorized",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=1"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 40,
+    "count": 1,
+    "description": "",
+    "link": "https://blog.facthub-mm.org/category/universe/",
+    "name": "Universe",
+    "slug": "universe",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories/40"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://blog.facthub-mm.org/wp-json/wp/v2/posts?categories=40"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  }
+]

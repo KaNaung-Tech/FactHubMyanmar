@@ -5,13 +5,20 @@ import Setting from '../../asserts/svg/Setting';
 import HomeTopTabNavigator from '../../routes/HomeTopTabNavigator';
 
 const HomeScreen = ({ navigation }) => {
-  const { getTheme } = useTheme();
+  const { getTheme, isDarkTheme } = useTheme();
   const theme = getTheme();
 
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <View style={styles.header}>
-        <Image source={require('../../asserts/images/Facthub-Logo.png')} style={styles.logo} />
+        <Image
+          source={
+            isDarkTheme()
+              ? require('../../asserts/images/dark_logo.png')
+              : require('../../asserts/images/Facthub-Logo.png')
+          }
+          style={styles.logo}
+        />
         <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
           <Setting color={theme.textColor} />
         </TouchableOpacity>
@@ -31,6 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 20,
+    marginHorizontal: 10,
   },
   logo: {
     width: 100,
