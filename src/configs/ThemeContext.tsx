@@ -21,8 +21,9 @@ interface ThemeConfig {
   textColor: string;
   statusBarStyle: 'dark-content' | 'light-content';
   buttonColor?: string;
+  highlightColor?: string; 
+  borderColor?: string; 
 }
-
 interface ThemeContextProps {
   theme: ThemeType;
   toggleTheme: (selectedTheme: ThemeType) => Promise<void>;
@@ -37,6 +38,8 @@ const lightTheme: ThemeConfig = {
   textColor: '#000000',
   statusBarStyle: 'dark-content',
   buttonColor:  '#F4F4F6',
+  highlightColor: '#FF5722', 
+  borderColor: '#E0E0E0',
 };
 
 const darkTheme: ThemeConfig = {
@@ -44,6 +47,8 @@ const darkTheme: ThemeConfig = {
   textColor: '#F9F9FA',
   statusBarStyle: 'light-content',
   buttonColor: '#2D2F39',
+  highlightColor: '#FF5722',
+  borderColor: '#444455',
 };
 
 const eyeProtectionTheme: ThemeConfig = {
@@ -51,6 +56,8 @@ const eyeProtectionTheme: ThemeConfig = {
   textColor: '#444655',
   statusBarStyle: 'dark-content',
   buttonColor:  '#FFFCEB',
+  highlightColor: '#FF5722',
+  borderColor: '#FFD700',
 };
 
 const themes: Record<ThemeType, ThemeConfig> = {
