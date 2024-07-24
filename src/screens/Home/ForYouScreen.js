@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -7,40 +7,48 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import {useTheme} from '../../configs/ThemeContext';
-import postsData from '../../data/posts.json';
-import categoriesData from '../../data/categories.json';
+import { useTheme } from '../../configs/ThemeContext';
+import { fetchArticles, fetchCategories } from '../../services/api';
+import BookmarkBtn from '../../asserts/svg/BookmarkBtn';
 
-const ForYouScreen = ({navigation}) => {
-  const {getTheme} = useTheme();
+const ForYouScreen = ({ navigation }) => {
+  const { getTheme } = useTheme();
   const theme = getTheme();
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState({});
 
   useEffect(() => {
-    // Simulate API fetch or async data loading
-    const fetchData = async () => {
-      // Sort posts by title
-      const sortedPosts = postsData.sort((a, b) =>
-        a.title.rendered.localeCompare(b.title.rendered),
-      );
-      setPosts(sortedPosts);
+    const getArticles = async () => {
+      try {
+        const fetchedArticles = await fetchArticles();
+        const sortedPosts = fetchedArticles.sort((a, b) =>
+          a.title.rendered.localeCompare(b.title.rendered),
+        );
+        const postsWithMediaAndAuthor = sortedPosts.map(post => ({
+          ...post,
+          featured_media_url: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '',
+          author_name: post._embedded?.author?.[0]?.name || 'Unknown Author',
+        }));
+        setPosts(postsWithMediaAndAuthor);
 
-      // Map categories to an object for quick lookup
-      const categoriesMap = categoriesData.reduce((map, category) => {
-        map[category.id] = category.name;
-        return map;
-      }, {});
-      setCategories(categoriesMap);
+        const categoriesResponse = await fetchCategories();
+        const categoriesMap = categoriesResponse.reduce((map, category) => {
+          map[category.id] = category.name;
+          return map;
+        }, {});
+        setCategories(categoriesMap);
+      } catch (error) {
+        console.error('Error fetching articles or categories:', error);
+      }
     };
 
-    fetchData();
-  }, [theme]); // Depend on theme changes for data refresh if needed
+    getArticles();
+  }, [theme]);
 
   const renderPost = post => (
     <View
       key={post.id}
-      style={[styles.postContainer, {borderBottomColor: theme.textColor}]}>
+      style={[styles.postContainer, { borderBottomColor: theme.textColor }]}>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate('CategoryDetail', {
@@ -50,31 +58,34 @@ const ForYouScreen = ({navigation}) => {
         <View
           style={[
             styles.categoryContainer,
-            {backgroundColor: theme.buttonColor},
+            { backgroundColor: theme.buttonColor },
           ]}>
-          <Text style={styles.categoryLabel}>
+          <Text style={[styles.categoryLabel, { color: theme.textColor }]}>
             {categories[post.categories[0]]}
           </Text>
         </View>
       </TouchableOpacity>
-      <Text style={[styles.postTitle, {color: theme.textColor}]}>
+      <Text style={[styles.postTitle, { color: theme.textColor }]}>
         {post.title.rendered}
       </Text>
       {post.featured_media_url && (
         <Image
-          source={{uri: post.featured_media_url}}
+          source={{ uri: post.featured_media_url }}
           style={styles.postImage}
         />
       )}
-      <Text style={styles.postAuthor}>{`By ${post.author} • ${new Date(
-        post.date,
-      ).toLocaleDateString()}`}</Text>
+      <Text style={[styles.postAuthor, { color: theme.textColor }]}>{`By ${
+        post.author_name
+      } • ${new Date(post.date).toLocaleDateString()}`}</Text>
+      <BookmarkBtn />
     </View>
   );
 
   return (
-    <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
-      <ScrollView style={styles.postsList}>{posts.map(renderPost)}</ScrollView>
+    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
+      <ScrollView style={styles.postsList}>
+        {posts.map(renderPost)}
+      </ScrollView>
     </View>
   );
 };
@@ -84,6 +95,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  header: {
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  headerSubtitle: {
+    fontSize: 18,
+    color: '#555',
+  },
   postsList: {
     flex: 1,
   },
@@ -91,11 +116,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderBottomWidth: 2,
-    // borderBottomColor: '#F4F4F6',
   },
   categoryLabel: {
     fontSize: 14,
-    color: '#F56200',
     marginBottom: 5,
   },
   categoryContainer: {

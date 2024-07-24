@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView, Text, Image, TouchableOpacity, TextInput } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
-import postsData from '../../data/posts.json';
-import categoriesData from '../../data/categories.json';
 import Setting from '../../asserts/svg/Setting';
+import { fetchArticles, fetchCategories } from '../../services/api';
+import SearchInput from '../../components/SearchInput';
 
 const ExploreScreen = ({ navigation }) => {
   const { getTheme } = useTheme();
@@ -13,24 +13,25 @@ const ExploreScreen = ({ navigation }) => {
   const [editorPicks, setEditorPicks] = useState([]);
 
   useEffect(() => {
-    setCategories(categoriesData);
-    setEditorPicks(postsData.slice(0, 4)); // Assume editor picks are the first 4 posts
+    // Fetch categories and editor picks
+    const fetchData = async () => {
+      const categoriesData = await fetchCategories();
+      const articlesData = await fetchArticles();
+      setCategories(categoriesData);
+      setEditorPicks(articlesData.slice(0, 4)); // Assume editor picks are the first 4 posts
+    };
+
+    fetchData();
   }, []);
 
   const renderCategory = (category) => (
     <TouchableOpacity key={category.id} style={styles.categoryContainer} onPress={() => navigation.navigate('CategoryDetail', { categoryId: category.id })}>
       <Text style={[styles.categoryName, { color: theme.textColor }]}>{category.name}</Text>
-      <Text style={styles.categoryInfo}>{`${category.post_count} Blogs uploaded`}</Text>
     </TouchableOpacity>
   );
 
   const renderEditorPick = (post) => (
     <View key={post.id} style={[styles.postContainer, { backgroundColor: theme.backgroundColor }]}>
-      {post.categories?.[0] && (
-        <View style={styles.categoryLabelContainer}>
-          <Text style={styles.categoryLabel}>{post.categories[0]}</Text>
-        </View>
-      )}
       <Text style={[styles.postTitle, { color: theme.textColor }]}>{post.title.rendered}</Text>
       {post.featured_media_url && (
         <Image source={{ uri: post.featured_media_url }} style={styles.postImage} />
@@ -39,7 +40,7 @@ const ExploreScreen = ({ navigation }) => {
         <Text style={[styles.postExcerpt, { color: theme.textColor }]}>{post.excerpt.rendered.replace(/<[^>]+>/g, '')}</Text>
       ) : null}
       <View style={styles.postInfo}>
-        <Text style={[styles.postAuthor, { color: theme.textColor }]}>{post.author}</Text>
+        <Text style={[styles.postAuthor, { color: theme.textColor }]}>{post.author_name}</Text>
         <Text style={[styles.postDate, { color: theme.textColor }]}>{` • ${new Date(post.date).toLocaleDateString()}`}</Text>
         <Text style={[styles.postReadTime, { color: theme.textColor }]}>{` • ${post.read_time} mins read`}</Text>
       </View>
@@ -54,13 +55,13 @@ const ExploreScreen = ({ navigation }) => {
           <Setting color={theme.textColor} />
         </TouchableOpacity>
       </View>
-      <TextInput
-        style={[styles.searchBar, { backgroundColor: theme.buttonColor, color: theme.textColor, borderColor: theme.buttonColor }]}
-        placeholder="Search..."
-        placeholderTextColor={theme.textColor}
-        value={searchQuery}
-        onChangeText={setSearchQuery}
+      <View style={styles.searchBarontainer}>
+      <SearchInput
+        theme={theme}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
       />
+    </View>
       <ScrollView
         contentContainerStyle={styles.scrollViewContent}
         showsVerticalScrollIndicator={false}
@@ -133,28 +134,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  categoryInfo: {
-    fontSize: 14,
-    color: '#777',
-  },
   postContainer: {
     marginBottom: 20,
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#F4F4F6',
     borderRadius: 10,
-  },
-  categoryLabelContainer: {
-    backgroundColor: '#FFEBE6',
-    borderRadius: 15,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    alignSelf: 'flex-start',
-    marginBottom: 5,
-  },
-  categoryLabel: {
-    fontSize: 14,
-    color: '#F56200',
   },
   postTitle: {
     fontSize: 18,
