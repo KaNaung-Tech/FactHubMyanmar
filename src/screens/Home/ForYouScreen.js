@@ -8,42 +8,39 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
-import { fetchArticles, fetchCategories } from '../../services/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { getArticles, getCategories } from '../../services/api';
 import BookmarkBtn from '../../asserts/svg/BookmarkBtn';
+import { loadPosts } from '../../redux/slices/postsSlice';
 
 const ForYouScreen = ({ navigation }) => {
   const { getTheme } = useTheme();
   const theme = getTheme();
-  const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch();
+  const posts = useSelector(state => state.posts.posts);
+  const selectedCategories = useSelector(state => state.categories.selectedCategories);
   const [categories, setCategories] = useState({});
 
   useEffect(() => {
-    const getArticles = async () => {
-      try {
-        const fetchedArticles = await fetchArticles();
-        const sortedPosts = fetchedArticles.sort((a, b) =>
-          a.title.rendered.localeCompare(b.title.rendered),
-        );
-        const postsWithMediaAndAuthor = sortedPosts.map(post => ({
-          ...post,
-          featured_media_url: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '',
-          author_name: post._embedded?.author?.[0]?.name || 'Unknown Author',
-        }));
-        setPosts(postsWithMediaAndAuthor);
-
-        const categoriesResponse = await fetchCategories();
-        const categoriesMap = categoriesResponse.reduce((map, category) => {
-          map[category.id] = category.name;
-          return map;
-        }, {});
-        setCategories(categoriesMap);
-      } catch (error) {
-        console.error('Error fetching articles or categories:', error);
-      }
+    const loadPostsAndCategories = async () => {
+      const fetchedArticles = await getArticles();
+      const categoriesResponse = await getCategories();
+      const categoriesMap = categoriesResponse.reduce((map, category) => {
+        map[category.id] = category.name;
+        return map;
+      }, {});
+      setCategories(categoriesMap);
+      dispatch(loadPosts(fetchedArticles));
     };
 
-    getArticles();
-  }, [theme]);
+    loadPostsAndCategories();
+  }, [dispatch]);
+
+  const filteredPosts = posts.filter(post =>
+    post.categories.some(categoryId =>
+      selectedCategories.includes(categories[categoryId])
+    )
+  );
 
   const renderPost = post => (
     <View
@@ -84,7 +81,7 @@ const ForYouScreen = ({ navigation }) => {
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <ScrollView style={styles.postsList}>
-        {posts.map(renderPost)}
+        {filteredPosts.map(renderPost)}
       </ScrollView>
     </View>
   );

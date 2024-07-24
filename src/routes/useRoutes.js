@@ -31,7 +31,7 @@ const MainNavigator = () => (
       <Stack.Screen name="Language" component={LanguageScreen} />
       <Stack.Screen name="ContactUs" component={ContactUsScreen} />
       <Stack.Screen name="DataImportExport" component={DataImportExportScreen} />
-      <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} options={{ title: 'Category Detail' }} />
+      {/* <Stack.Screen name="CategoryDetail" component={CategoryDetailScreen} options={{ title: 'Category Detail' }} /> */}
     </Stack.Navigator>
   </NavigationContainer>
 );

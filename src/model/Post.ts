@@ -8,5 +8,7 @@ export default class Post extends Model {
   @field('content') content!: string;
   @date('published_at') publishedAt!: number;
   @date('date') date!: number;
-  @field('author') author!: string;
+  @field('categories') categories!: string;
+  @field('author_name') authorName!: string;
+  @field('featured_media_url') featuredMediaUrl!:string;
 }

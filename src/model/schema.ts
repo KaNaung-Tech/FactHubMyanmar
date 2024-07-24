@@ -9,7 +9,9 @@ export const schema = appSchema({
         { name: 'title', type: 'string' },
         { name: 'content', type: 'string' },
         { name: 'date', type: 'number' },
-        { name: 'author', type: 'string' },
+        { name: 'categories', type: 'string' },
+        { name: 'author_name', type: 'string' },
+        { name: 'featured_media_url', type: 'string', isOptional: true },
       ],
     }),
     tableSchema({
