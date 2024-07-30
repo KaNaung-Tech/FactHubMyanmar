@@ -1,4 +1,3 @@
-// OnboardingScreen.js
 import React, { useEffect, useState } from 'react';
 import {
   View,
@@ -18,6 +17,7 @@ const OnboardingScreen = ({ navigation }) => {
   const theme = getTheme();
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategoriesState] = useState([]);
+  const [error, setError] = useState(null);
   const isButtonEnabled = selectedCategories.length >= 3;
   const dispatch = useDispatch();
 
@@ -28,17 +28,15 @@ const OnboardingScreen = ({ navigation }) => {
     const loadCategories = async () => {
       try {
         const fetchedCategories = await getCategories();
-        console.log('Fetched Categories:', fetchedCategories);
-
         const processedCategories = fetchedCategories.map(category => ({
-          id: category.id, // Ensure id is a string
-          name: category.name, // Ensure name is a string and handle empty names
+          id: category.id,
+          name: category.name,
         }));
-
         const sortedCategories = processedCategories.sort((a, b) => a.name.localeCompare(b.name));
         setCategories(sortedCategories);
       } catch (error) {
         console.error('Error loading categories:', error);
+        setError('Failed to load categories. Please try again.');
       }
     };
 
@@ -78,14 +76,18 @@ const OnboardingScreen = ({ navigation }) => {
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <Text style={[styles.title, { color: theme.textColor }]}>Let's know what you like</Text>
       <Text style={[styles.subtitle, { color: theme.textColor }]}>Choose three or more</Text>
-      <ScrollView
-        contentContainerStyle={styles.categoryList}
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}>
-        <View style={styles.categoryContainer}>
-          {categories.map(renderCategory)}
-        </View>
-      </ScrollView>
+      {error ? (
+        <Text style={[styles.errorText, { color: theme.errorTextColor }]}>{error}</Text>
+      ) : (
+        <ScrollView
+          contentContainerStyle={styles.categoryList}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}>
+          <View style={styles.categoryContainer}>
+            {categories.map(renderCategory)}
+          </View>
+        </ScrollView>
+      )}
       <TouchableOpacity
         style={[
           styles.customButtonContainer,
@@ -149,6 +151,11 @@ const styles = StyleSheet.create({
   },
   customButtonText: {
     fontSize: 16,
+  },
+  errorText: {
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: 'center',
   },
 });
 

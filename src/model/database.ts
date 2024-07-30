@@ -4,9 +4,12 @@ import { schema } from './schema';
 import Post from './Post';
 import Theme from './Theme';
 import Category from './Category';
+import migrations from './migrations';
+
 
 const adapter = new SQLiteAdapter({
   schema,
+  migrations,
   dbName: 'FactHubDB',
   jsi: true,
   onSetUpError: (error) => {

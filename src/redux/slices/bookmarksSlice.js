@@ -1,22 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 const bookmarksSlice = createSlice({
   name: 'bookmarks',
   initialState: {
-    bookmarks: [],
+    bookmarkedPosts: [],
   },
   reducers: {
     addBookmark: (state, action) => {
-      state.bookmarks.push(action.payload);
+      if (state.bookmarkedPosts.length > 0) {
+        const exists = state.bookmarkedPosts?.some(
+          bookmarkedPost => bookmarkedPost.post_id === action.payload.post_id,
+        );
+
+        if (!exists) {
+          state.bookmarkedPosts.push(action.payload);
+        }
+      } else {
+        state.bookmarkedPosts.push(action.payload);
+      }
     },
     removeBookmark: (state, action) => {
-      state.bookmarks = state.bookmarks.filter(
-        bookmark => bookmark.id !== action.payload.id
+      state.bookmarkedPosts = state.bookmarkedPosts.filter(
+        post => post.post_id !== action.payload,
       );
     },
   },
 });
 
-export const { addBookmark, removeBookmark } = bookmarksSlice.actions;
-
+export const {addBookmark, removeBookmark} = bookmarksSlice.actions;
 export default bookmarksSlice.reducer;

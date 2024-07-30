@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import { Svg, Path } from 'react-native-svg';
 import { TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBookmark, removeBookmark } from '../../redux/slices/bookmarksSlice';
 
-const BookmarkBtn = () => {
-  const [bookmarked, setBookmarked] = useState(false);
-  const navigation = useNavigation();
+const BookmarkBtn = ({ post, isBookmark }) => {
+  const dispatch = useDispatch();
+  const bookmarks = useSelector(state => state.bookmarks.bookmarkedPosts);
+  // console.log('bookmarks',bookmarks)
+  const isBookmarked = bookmarks.includes(post) || isBookmark;
 
   const handleClick = () => {
-    setBookmarked(!bookmarked);
-    if (!bookmarked) {
-      navigation.navigate('BookmarkScreen');
+    if (isBookmarked) {
+      dispatch(removeBookmark(post.post_id));
+    } else {
+      dispatch(addBookmark(post));
     }
   };
 
   return (
     <TouchableOpacity onPress={handleClick}>
-      {bookmarked ? (
+      {isBookmarked ? (
         <Svg
           width="20"
           height="20"

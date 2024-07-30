@@ -5,12 +5,7 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import {
-  useColorScheme,
-  StatusBar,
-  Platform,
-  View,
-} from 'react-native';
+import { useColorScheme, StatusBar, Platform } from 'react-native';
 import database from '../model/database';
 import Theme from '../model/Theme';
 
@@ -21,8 +16,8 @@ interface ThemeConfig {
   textColor: string;
   statusBarStyle: 'dark-content' | 'light-content';
   buttonColor?: string;
-  highlightColor?: string; 
-  borderColor?: string; 
+  highlightColor?: string;
+  borderColor?: string;
 }
 interface ThemeContextProps {
   theme: ThemeType;
@@ -37,8 +32,8 @@ const lightTheme: ThemeConfig = {
   backgroundColor: '#FFFFFF',
   textColor: '#000000',
   statusBarStyle: 'dark-content',
-  buttonColor:  '#F4F4F6',
-  highlightColor: '#FF5722', 
+  buttonColor: '#F4F4F6',
+  highlightColor: '#FF5722',
   borderColor: '#E0E0E0',
 };
 
@@ -55,7 +50,7 @@ const eyeProtectionTheme: ThemeConfig = {
   backgroundColor: '#FFFAE0',
   textColor: '#444655',
   statusBarStyle: 'dark-content',
-  buttonColor:  '#FFFCEB',
+  buttonColor: '#FFFCEB',
   highlightColor: '#FF5722',
   borderColor: '#FFD700',
 };
