@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -7,13 +7,16 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { useTheme } from '../../configs/ThemeContext';
-import { getCategories } from '../../services/api';
-import { setSelectedCategories } from '../../redux/slices/categoriesSlice';
+import {useDispatch} from 'react-redux';
+import {useTheme} from '../../configs/ThemeContext';
+import {getCategories} from '../../services/api';
+import {setSelectedCategories} from '../../redux/slices/categoriesSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import database from '../../model/database';
+import OnboardingSelection from '../../model/OnboardingSelection';
 
-const OnboardingScreen = ({ navigation }) => {
-  const { getTheme } = useTheme();
+const OnboardingScreen = ({navigation}) => {
+  const {getTheme} = useTheme();
   const theme = getTheme();
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategoriesState] = useState([]);
@@ -32,7 +35,9 @@ const OnboardingScreen = ({ navigation }) => {
           id: category.id,
           name: category.name,
         }));
-        const sortedCategories = processedCategories.sort((a, b) => a.name.localeCompare(b.name));
+        const sortedCategories = processedCategories.sort((a, b) =>
+          a.name.localeCompare(b.name),
+        );
         setCategories(sortedCategories);
       } catch (error) {
         console.error('Error loading categories:', error);
@@ -43,19 +48,20 @@ const OnboardingScreen = ({ navigation }) => {
     loadCategories();
   }, [theme]);
 
-  const toggleCategory = (category) => {
-    if (selectedCategories.includes(category.name)) {
+  const toggleCategory = category => {
+    if (selectedCategories.includes(category.id)) {
       setSelectedCategoriesState(
-        selectedCategories.filter((item) => item !== category.name),
+        selectedCategories.filter(item => item !== category.id),
       );
     } else {
-      setSelectedCategoriesState([...selectedCategories, category.name]);
+      setSelectedCategoriesState([...selectedCategories, category.id]);
     }
   };
 
-  const isCategorySelected = (category) => selectedCategories.includes(category.name);
+  const isCategorySelected = category =>
+    selectedCategories.includes(category.id);
 
-  const renderCategory = (category) => (
+  const renderCategory = category => (
     <TouchableOpacity
       key={category.id}
       style={[
@@ -67,17 +73,54 @@ const OnboardingScreen = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const handleNext = () => {
+  const saveOnboardingStatus = async () => {
+    try {
+      await AsyncStorage.setItem('onboardingCompleted', 'true');
+    } catch (error) {
+      console.error('Failed to save onboarding status:', error);
+    }
+  };
+
+  const saveOnboardingSelections = async () => {
+    try {
+      await database.write(async () => {
+        await Promise.all(
+          selectedCategories.map(async categoryId => {
+            const category = categories.find(cat => cat.id === categoryId);
+            await database.collections
+              .get('onboarding_selections')
+              .create(entry => {
+                entry.categoryName = category.name;
+                entry.createdAt = new Date();
+                entry.categoryId = category.id;
+              });
+          }),
+        );
+      });
+    } catch (error) {
+      console.error('Error saving onboarding selections:', error);
+    }
+  };
+
+  const handleNext = async () => {
     dispatch(setSelectedCategories(selectedCategories));
+    await saveOnboardingSelections();
+    await saveOnboardingStatus();
     navigation.navigate('MainTabs');
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <Text style={[styles.title, { color: theme.textColor }]}>Let's know what you like</Text>
-      <Text style={[styles.subtitle, { color: theme.textColor }]}>Choose three or more</Text>
+    <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
+      <Text style={[styles.title, {color: theme.textColor}]}>
+        Let's know what you like
+      </Text>
+      <Text style={[styles.subtitle, {color: theme.textColor}]}>
+        Choose three or more
+      </Text>
       {error ? (
-        <Text style={[styles.errorText, { color: theme.errorTextColor }]}>{error}</Text>
+        <Text style={[styles.errorText, {color: theme.errorTextColor}]}>
+          {error}
+        </Text>
       ) : (
         <ScrollView
           contentContainerStyle={styles.categoryList}
@@ -95,7 +138,9 @@ const OnboardingScreen = ({ navigation }) => {
         ]}
         onPress={handleNext}
         disabled={!isButtonEnabled}>
-        <Text style={[styles.customButtonText, { color: theme.textColor }]}>Next</Text>
+        <Text style={[styles.customButtonText, {color: theme.textColor}]}>
+          Next
+        </Text>
       </TouchableOpacity>
     </View>
   );

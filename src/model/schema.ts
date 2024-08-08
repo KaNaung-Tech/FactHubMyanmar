@@ -28,5 +28,13 @@ export const schema = appSchema({
         {name: 'count', type: 'number'},
       ],
     }),
+    tableSchema({
+      name: 'onboarding_selections',
+      columns: [
+        { name: 'category_name', type: 'string' },
+        { name: 'created_at', type: 'number' },
+        {name: 'category_id',type: 'string'},
+      ],
+    }),
   ],
 });

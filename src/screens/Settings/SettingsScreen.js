@@ -50,12 +50,12 @@ const SettingsScreen = () => {
           <Text style={[styles.optionTitle, { color: theme.textColor }]}>Theme</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.optionContainer} onPress={() => navigation.navigate('Language')}>
+      {/* <TouchableOpacity style={styles.optionContainer} onPress={() => navigation.navigate('Language')}>
         <View style={styles.option}>
           <Image source={icons.language} style={styles.icon} />
           <Text style={[styles.optionTitle, { color: theme.textColor }]}>Language</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity style={styles.optionContainer} onPress={() => navigation.navigate('ContactUs')}>
         <View style={styles.option}>
           <Image source={icons.contact} style={styles.icon} />

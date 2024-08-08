@@ -100,16 +100,25 @@ const getCategories = async () => {
   return validCategories;
 };
 
-
-
 const fetchArticles = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/posts?_embed&per_page=10`);
     const postsData = response.data.map(validatePost);
-    // console.log('API Posts Response:', response.data);
     return postsData;
   } catch (error) {
     console.error('Error fetching articles from API:', error);
+    return [];
+  }
+};
+
+const fetchForYouArticles = async (categoryIds) => {
+  const categoriesQuery = categoryIds.join(',');
+  try {
+    const response = await axios.get(`${API_BASE_URL}/posts?categories=${categoriesQuery}&per_page=100`);
+    const postsData = response.data.map(validatePost);
+    return postsData;
+  } catch (error) {
+    console.error('Error fetching "For You" articles from API:', error);
     return [];
   }
 };
@@ -135,4 +144,4 @@ const getArticles = async () => {
   return postsData;
 };
 
-export { getArticles, getCategories };
+export { getArticles, getCategories, fetchForYouArticles };

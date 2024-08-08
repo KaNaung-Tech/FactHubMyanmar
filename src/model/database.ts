@@ -5,6 +5,7 @@ import Post from './Post';
 import Theme from './Theme';
 import Category from './Category';
 import migrations from './migrations';
+import OnboardingSelection from './OnboardingSelection';
 
 
 const adapter = new SQLiteAdapter({
@@ -19,7 +20,7 @@ const adapter = new SQLiteAdapter({
 
 const database = new Database({
   adapter,
-  modelClasses: [Post, Theme,Category],
+  modelClasses: [Post, Theme,Category,OnboardingSelection],
 });
 
 export default database;

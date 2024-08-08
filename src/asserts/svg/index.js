@@ -1,2 +1,2 @@
 export {default as BackArrow} from './BackArrow';
-export {default as BookmarkBtn} from './BookmarkBtn'
+export {default as BookmarkBtn} from './BookmarkBtn';

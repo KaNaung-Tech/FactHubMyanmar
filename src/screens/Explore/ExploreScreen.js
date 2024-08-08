@@ -12,6 +12,7 @@ import Setting from '../../asserts/svg/Setting';
 import {getArticles, getCategories} from '../../services/api';
 import SearchInput from '../../components/SearchInput';
 import ArticleIcon from '../../asserts/svg/ArticleIcon';
+import CategoryBackArrow from '../../asserts/svg/CategoryBackArrow';
 
 const ExploreScreen = ({navigation}) => {
   const {getTheme} = useTheme();
@@ -48,6 +49,9 @@ const ExploreScreen = ({navigation}) => {
         <Text style={[styles.categoryName, {color: theme.textColor}]}>
           {category.name}
         </Text>
+        <View style={styles.categoryBackIconContainer}>
+          <CategoryBackArrow style={styles.categoryBackIcon}/>
+        </View>
       </View>
       <Text style={[styles.blog, {color: theme.textColor}]}>
         {category.count} Blogs Uploaded
@@ -166,7 +170,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   categoryIcon: {
-    // marginRight: 8,
+    marginRight: 8,
+  },
+  categoryBackIconContainer: {
+    flex: 1,
+    alignItems: 'flex-end',
+  },
+  categoryBackIcon: {
+    marginLeft: 8,
   },
   categoryName: {
     fontSize: 16,
@@ -174,7 +185,7 @@ const styles = StyleSheet.create({
   },
   blog: {
     fontSize: 14,
-    marginLeft: 10,
+    marginLeft: 8,
   },
   postContainer: {
     borderRadius: 8,
