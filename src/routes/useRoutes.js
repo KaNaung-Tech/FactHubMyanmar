@@ -11,6 +11,7 @@ import ContactUsScreen from '../screens/Settings/ContactUsScreen';
 import DataImportExportScreen from '../screens/Settings/DataImportExportScreen';
 import TabNavigator from './TabNavigator';
 import CategoryDetailScreen from '../screens/Home/CategoryDetailScreen';
+import BlogScreen from '../screens/Blog/BlogScreen';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ const MainNavigator = () => (
     <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="MainTabs" component={TabNavigator} />
+      <Stack.Screen name="Blog" component={BlogScreen}/>
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Theme" component={ThemeScreen} />
       <Stack.Screen name="Language" component={LanguageScreen} />

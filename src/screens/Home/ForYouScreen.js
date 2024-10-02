@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   FlatList,
+  Pressable,
 } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
 import { fetchArticles, fetchCategories } from '../../services/api';
@@ -50,6 +51,14 @@ const ForYouScreen = ({ navigation }) => {
   }, [theme]);
 
   const renderPost = ({ item: post }) => (
+    <Pressable 
+      onPress={() =>
+  navigation.navigate('BlogScreen', {
+    post, // Passing the post data to BlogScreen
+  })
+}
+>
+
     <View
       key={post.id}
       style={[styles.postContainer, { borderBottomColor: theme.textColor }]}>
@@ -74,8 +83,8 @@ const ForYouScreen = ({ navigation }) => {
       </Text>
       {post.featured_media_url && (
         <Image
-          source={{ uri: post.featured_media_url }}
-          style={styles.postImage}
+        source={{ uri: post.featured_media_url }}
+        style={styles.postImage}
         />
       )}
       <Text style={[styles.postAuthor, { color: theme.textColor }]}>{`By ${
@@ -83,6 +92,7 @@ const ForYouScreen = ({ navigation }) => {
       } • ${new Date(post.date).toLocaleDateString()}`}</Text>
       <BookmarkBtn />
     </View>
+      </Pressable>
   );
 
   if (loading) {
