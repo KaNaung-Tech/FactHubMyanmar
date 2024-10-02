@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
-  ScrollView,
   Text,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
+  FlatList,
 } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
 import { fetchArticles, fetchCategories } from '../../services/api';
@@ -16,6 +17,7 @@ const ForYouScreen = ({ navigation }) => {
   const theme = getTheme();
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getArticles = async () => {
@@ -39,13 +41,15 @@ const ForYouScreen = ({ navigation }) => {
         setCategories(categoriesMap);
       } catch (error) {
         console.error('Error fetching articles or categories:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     getArticles();
   }, [theme]);
 
-  const renderPost = post => (
+  const renderPost = ({ item: post }) => (
     <View
       key={post.id}
       style={[styles.postContainer, { borderBottomColor: theme.textColor }]}>
@@ -81,11 +85,23 @@ const ForYouScreen = ({ navigation }) => {
     </View>
   );
 
+  if (loading) {
+    return (
+      <View style={[styles.loadingContainer, { backgroundColor: theme.backgroundColor }]}>
+        <ActivityIndicator size="large" color={theme.textColor} />
+        <Text style={[styles.loadingText, { color: theme.textColor }]}>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <ScrollView style={styles.postsList}>
-        {posts.map(renderPost)}
-      </ScrollView>
+      <FlatList
+        data={posts}
+        keyExtractor={post => post.id.toString()}
+        renderItem={renderPost}
+        contentContainerStyle={styles.postsList}
+      />
     </View>
   );
 };
@@ -95,22 +111,17 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
-  header: {
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  headerSubtitle: {
-    fontSize: 18,
-    color: '#555',
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
   },
   postsList: {
-    flex: 1,
+    paddingBottom: 20,
   },
   postContainer: {
     marginBottom: 20,
