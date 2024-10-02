@@ -24,7 +24,6 @@ const MainNavigator = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Splash" component={SplashScreen} />
-      <Stack.Screen name="OnboardingStack" component={OnboardingStack} />
       <Stack.Screen name="MainTabs" component={TabNavigator} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Theme" component={ThemeScreen} />

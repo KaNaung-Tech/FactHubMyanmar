@@ -15,7 +15,7 @@ const SplashScreen = () => {
     StatusBar.setBackgroundColor(getTheme().backgroundColor);
 
     const timeout = setTimeout(() => {
-      navigation.replace('OnboardingStack');
+      navigation.replace('MainTabs');
     }, 2000);
 
     return () => clearTimeout(timeout);
