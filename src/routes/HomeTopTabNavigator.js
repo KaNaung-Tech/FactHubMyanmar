@@ -13,7 +13,7 @@ const HomeTopTabNavigator = () => {
   return (
     <TopTab.Navigator
       screenOptions={{
-        tabBarStyle: { backgroundColor: theme.backgroundColor },
+        tabBarStyle: { backgroundColor: theme.backgroundColor, height:44 },
         tabBarActiveTintColor: theme.textColor,
         tabBarInactiveTintColor: '#888888',
         tabBarIndicatorStyle: { backgroundColor: '#F56200' }, 

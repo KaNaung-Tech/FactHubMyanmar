@@ -34,10 +34,14 @@ const TabNavigator = () => {
         },
         tabBarStyle: {
           backgroundColor: theme.backgroundColor,
+          height: 70, // Increase the height here (you can adjust this value)
+          paddingBottom: 10, // Optional: adds extra padding for better spacing
+        
         },
         tabBarActiveTintColor: '#F56200',
         tabBarInactiveTintColor: '#888888',
         headerShown: false,
+        
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />

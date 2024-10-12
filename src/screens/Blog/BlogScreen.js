@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   Dimensions,
-  ProgressBarAndroid, // Progress bar for Android (use 'ProgressViewIOS' for iOS)
+  TouchableOpacity,
 } from 'react-native';
+import {ProgressBar} from '@react-native-community/progress-bar-android'; // Community Progress Bar
+import RenderHtml from 'react-native-render-html';
 import { useTheme } from '../../configs/ThemeContext';
 
-const BlogScreen = ({ route }) => {
+// Import your custom SVG icons
+import MaterialcommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
+const BlogScreen = ({ route, navigation }) => {
   const { getTheme } = useTheme();
   const theme = getTheme();
   const { post } = route.params;
-  const [scrollY, setScrollY] = useState(0);
-  const [progress, setProgress] = useState(0);
 
+  const [progress, setProgress] = useState(0); // State to track the progress
+
+  // Handle scroll event to calculate progress
   const handleScroll = (event) => {
     const { contentOffset, contentSize } = event.nativeEvent;
     const screenHeight = Dimensions.get('window').height;
@@ -27,36 +34,83 @@ const BlogScreen = ({ route }) => {
     }
   };
 
+  // Action to handle saving or bookmarking the post
+  const handleSave = () => {
+    // Add logic for saving or bookmarking the post here
+    console.log('Post saved/bookmarked!');
+  };
+
+  const source = {
+    html: post.content.rendered, // Assuming the HTML content is stored here
+  };
+
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
+      {/* Top Navigation Bar with Back and Save Icons */}
+      <View style={styles.navBar}>
+        {/* Back Action */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.navButton}>
+          <MaterialcommunityIcons name='bookmark-plus-outline' size={30} color={theme.textColor} />
+        </TouchableOpacity>
+
+        {/* Save/Bookmark Action */}
+        <TouchableOpacity onPress={handleSave} style={styles.navButton}>
+          {/* <BookmarkIcon width={24} height={24} fill={theme.textColor} /> */}
+        </TouchableOpacity>
+      </View>
+
+      {/* Progress Bar */}
       <View style={styles.progressBarContainer}>
-        <ProgressBarAndroid 
-          styleAttr="Horizontal" 
-          color={theme.textColor}
+        <ProgressBar
+          styleAttr="Horizontal"
           indeterminate={false}
           progress={progress}
+          color={theme.textColor} // Set the color based on the theme
         />
       </View>
+
+      {/* Scrollable Blog Content */}
       <ScrollView
         onScroll={handleScroll}
-        scrollEventThrottle={16}
+        scrollEventThrottle={16} // Throttling for smoother scroll
       >
+        {/* Title */}
         <Text style={[styles.title, { color: theme.textColor }]}>
           {post.title.rendered}
         </Text>
-        <Text style={[styles.content, { color: theme.textColor }]}>
-          {post.content.rendered} {/* Assuming HTML content, you may need to render it properly */}
-        </Text>
+
+        {/* HTML Content Rendering */}
+        <RenderHtml
+          contentWidth={Dimensions.get('window').width}
+          source={source}
+          tagsStyles={{
+            body: {
+              color: theme.textColor,
+              fontSize: 16,
+              lineHeight: 24,
+            },
+            a: {
+              color: theme.primaryColor, // Link color
+            },
+          }}
+        />
       </ScrollView>
     </View>
   );
 };
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 10,
+  },
+  navBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  navButton: {
     padding: 10,
   },
   progressBarContainer: {
@@ -67,10 +121,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-  },
-  content: {
-    fontSize: 16,
-    lineHeight: 24,
   },
 });
 

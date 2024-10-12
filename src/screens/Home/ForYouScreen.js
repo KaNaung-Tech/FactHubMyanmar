@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   FlatList,
-  Pressable,
+  Modal,
 } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
 import { fetchArticles, fetchCategories } from '../../services/api';
@@ -19,6 +19,7 @@ const ForYouScreen = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState({});
   const [loading, setLoading] = useState(true);
+  const [isError, setIsError] = useState(false);  // New state to track error
 
   useEffect(() => {
     const getArticles = async () => {
@@ -42,6 +43,7 @@ const ForYouScreen = ({ navigation }) => {
         setCategories(categoriesMap);
       } catch (error) {
         console.error('Error fetching articles or categories:', error);
+        setIsError(true);  // Set error state to true if there is an issue
       } finally {
         setLoading(false);
       }
@@ -51,56 +53,63 @@ const ForYouScreen = ({ navigation }) => {
   }, [theme]);
 
   const renderPost = ({ item: post }) => (
-    <Pressable 
+    <TouchableOpacity
       onPress={() =>
-  navigation.navigate('BlogScreen', {
-    post, // Passing the post data to BlogScreen
-  })
-}
->
-
-    <View
-      key={post.id}
-      style={[styles.postContainer, { borderBottomColor: theme.textColor }]}>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate('CategoryDetail', {
-            categoryId: post.categories[0],
-          })
-        }>
-        <View
-          style={[
-            styles.categoryContainer,
-            { backgroundColor: theme.buttonColor },
-          ]}>
-          <Text style={[styles.categoryLabel, { color: theme.textColor }]}>
-            {categories[post.categories[0]]}
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <Text style={[styles.postTitle, { color: theme.textColor }]}>
-        {post.title.rendered}
-      </Text>
-      {post.featured_media_url && (
-        <Image
-        source={{ uri: post.featured_media_url }}
-        style={styles.postImage}
-        />
-      )}
-      <Text style={[styles.postAuthor, { color: theme.textColor }]}>{`By ${
-        post.author_name
-      } • ${new Date(post.date).toLocaleDateString()}`}</Text>
-      <BookmarkBtn />
-    </View>
-      </Pressable>
+        navigation.navigate('Blog', {
+          post, // Passing the post data to BlogScreen
+        })
+      }>
+      <View
+        key={post.id}
+        style={[styles.postContainer, { borderBottomColor: theme.textColor }]}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('CategoryDetail', {
+              categoryId: post.categories[0],
+            })
+          }>
+          <View
+            style={[
+              styles.categoryContainer,
+              { backgroundColor: theme.buttonColor },
+            ]}>
+            <Text style={[styles.categoryLabel, { color: theme.textColor }]}>
+              {categories[post.categories[0]]}
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <Text style={[styles.postTitle, { color: theme.textColor }]}>
+          {post.title.rendered}
+        </Text>
+        {post.featured_media_url && (
+          <Image
+            source={{ uri: post.featured_media_url }}
+            style={styles.postImage}
+          />
+        )}
+        <Text style={[styles.postAuthor, { color: theme.textColor }]}>
+          {`By ${post.author_name} • ${new Date(post.date).toLocaleDateString()}`}
+        </Text>
+        <BookmarkBtn />
+      </View>
+    </TouchableOpacity>
   );
 
   if (loading) {
     return (
-      <View style={[styles.loadingContainer, { backgroundColor: theme.backgroundColor }]}>
-        <ActivityIndicator size="large" color={theme.textColor} />
-        <Text style={[styles.loadingText, { color: theme.textColor }]}>Loading...</Text>
-      </View>
+      <Modal visible={loading} transparent animationType="fade">
+        <View style={styles.modalContainer}>
+          <ActivityIndicator size="large" color={theme.textColor} />
+          <Text style={[styles.loadingText, { color: theme.textColor }]}>
+            Loading...
+          </Text>
+          {isError && (
+            <Text style={[styles.errorText, { color: theme.textColor }]}>
+              There is no connection, please open the internet and try again.
+            </Text>
+          )}
+        </View>
+      </Modal>
     );
   }
 
@@ -121,14 +130,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
-  loadingContainer: {
+  modalContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Makes the background darker
   },
   loadingText: {
     marginTop: 10,
     fontSize: 16,
+  },
+  errorText: {
+    marginTop: 20,
+    fontSize: 14,
+    textAlign: 'center',
   },
   postsList: {
     paddingBottom: 20,
