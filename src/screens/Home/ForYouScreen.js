@@ -68,12 +68,7 @@ const ForYouScreen = ({ navigation }) => {
         style={[styles.postContainer, { borderBottomColor: theme.textColor }]}>
         
         {/* Category */}
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('CategoryDetail', {
-              categoryId: post.categories[0],
-            })
-          }>
+      
           <View
             style={[
               styles.categoryContainer,
@@ -83,7 +78,6 @@ const ForYouScreen = ({ navigation }) => {
               {categories[post.categories[0]]}
             </Text>
           </View>
-        </TouchableOpacity>
         
         {/* Title */}
         <Text style={[styles.postTitle, { color: theme.textColor }]}>
@@ -99,18 +93,21 @@ const ForYouScreen = ({ navigation }) => {
         )}
         
         {/* Author and Date */}
-        <Text style={[styles.postAuthor, { color: theme.textColor }]}>
-          {`By ${post.author_name} • ${new Date(post.date).toLocaleDateString()}`}
-        </Text>
-        
-        {/* Bookmark Button */}
-        <TouchableOpacity onPress={() => toggleBookmark(post)} style={styles.bookmarkButton}>
-          <BookmarkBtn
-            width={24}
-            height={24}
-            fill={isBookmarked(post.id) ? theme.primaryColor : theme.textColor} // Change icon color based on bookmark state
-          />
-        </TouchableOpacity>
+        <View style={styles.postInfoContainer}>
+  <Text style={[styles.postAuthor, { color: theme.textColor }]}>
+    {`By ${post.author_name}\n${new Date(post.date).toLocaleDateString()}`}
+  </Text>
+
+  {/* Bookmark Button */}
+  <TouchableOpacity onPress={() => toggleBookmark(post)} style={styles.bookmarkButton}>
+    <BookmarkBtn
+      width={24}
+      height={24}
+      fill={isBookmarked(post.id) ? theme.primaryColor : theme.textColor} // Change icon color based on bookmark state
+    />
+  </TouchableOpacity>
+</View>
+
       </View>
     </TouchableOpacity>
   );
@@ -172,6 +169,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderBottomWidth: 2,
+  },
+  postInfoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between', // To push the bookmark button to the right
+    alignItems: 'center', // Align items vertically in the center
+    marginBottom: 10,
+  },
+  bookmarkButton: {
+    marginLeft: 10, // Add some spacing between text and button
   },
   categoryLabel: {
     fontSize: 14,

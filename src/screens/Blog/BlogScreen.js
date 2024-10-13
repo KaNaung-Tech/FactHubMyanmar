@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -7,11 +7,14 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {ProgressBar} from '@react-native-community/progress-bar-android'; // Community Progress Bar
+import { ProgressBar } from '@react-native-community/progress-bar-android'; // Community Progress Bar
 import RenderHtml from 'react-native-render-html';
 import { useTheme } from '../../configs/ThemeContext';
 
-// Import your custom SVG icons
+// Import Bookmark Context
+import BookmarkContext from '../../context/BookmarkProvider';
+
+// Import your custom SVG icons or vector icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -21,6 +24,9 @@ const BlogScreen = ({ route, navigation }) => {
   const { post } = route.params;
 
   const [progress, setProgress] = useState(0); // State to track the progress
+
+  // Access BookmarkContext to toggle bookmarks
+  const { toggleBookmark, isBookmarked } = useContext(BookmarkContext);
 
   // Handle scroll event to calculate progress
   const handleScroll = (event) => {
@@ -34,10 +40,9 @@ const BlogScreen = ({ route, navigation }) => {
     }
   };
 
-  // Action to handle saving or bookmarking the post
-  const handleSave = () => {
-    // Add logic for saving or bookmarking the post here
-    console.log('Post saved/bookmarked!');
+  // Handle bookmark toggle
+  const handleBookmarkToggle = () => {
+    toggleBookmark(post); // Toggle the bookmark state
   };
 
   const source = {
@@ -46,15 +51,20 @@ const BlogScreen = ({ route, navigation }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      {/* Top Navigation Bar with Back and Save Icons */}
+      {/* Top Navigation Bar with Back and Bookmark Icons */}
       <View style={styles.navBar}>
+        {/* Back Button */}
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.navButton}>
           <MaterialIcons name='keyboard-backspace' size={30} color={theme.textColor} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleSave} style={styles.navButton}>
-        <MaterialCommunityIcons name='bookmark-plus-outline' size={30} color={theme.textColor} />
-
+        {/* Bookmark Button */}
+        <TouchableOpacity onPress={handleBookmarkToggle} style={styles.navButton}>
+          <MaterialCommunityIcons
+            name={isBookmarked(post.id) ? 'bookmark' : 'bookmark-outline'}
+            size={30}
+            color={isBookmarked(post.id) ? theme.primaryColor : theme.textColor} // Toggle the icon based on bookmark state
+          />
         </TouchableOpacity>
       </View>
 
