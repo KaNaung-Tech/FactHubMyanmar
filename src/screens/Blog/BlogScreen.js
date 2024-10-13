@@ -12,8 +12,8 @@ import RenderHtml from 'react-native-render-html';
 import { useTheme } from '../../configs/ThemeContext';
 
 // Import your custom SVG icons
-import MaterialcommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const BlogScreen = ({ route, navigation }) => {
   const { getTheme } = useTheme();
@@ -48,14 +48,13 @@ const BlogScreen = ({ route, navigation }) => {
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       {/* Top Navigation Bar with Back and Save Icons */}
       <View style={styles.navBar}>
-        {/* Back Action */}
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.navButton}>
-          <MaterialcommunityIcons name='bookmark-plus-outline' size={30} color={theme.textColor} />
+          <MaterialIcons name='keyboard-backspace' size={30} color={theme.textColor} />
         </TouchableOpacity>
 
-        {/* Save/Bookmark Action */}
         <TouchableOpacity onPress={handleSave} style={styles.navButton}>
-          {/* <BookmarkIcon width={24} height={24} fill={theme.textColor} /> */}
+        <MaterialCommunityIcons name='bookmark-plus-outline' size={30} color={theme.textColor} />
+
         </TouchableOpacity>
       </View>
 
