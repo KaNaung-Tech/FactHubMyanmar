@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
 import Setting from '../../asserts/svg/Setting';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,13 +10,16 @@ const BookmarkScreen = ({ navigation }) => {
   const theme = getTheme();
   const [bookmarks, setBookmarks] = useState([]);
 
-  // Fetch bookmarks from AsyncStorage
+  // Fetch bookmarks from AsyncStorage and sort by date
   useEffect(() => {
     const loadBookmarks = async () => {
       try {
         const storedBookmarks = await AsyncStorage.getItem('bookmarkedPosts');
         if (storedBookmarks) {
-          setBookmarks(JSON.parse(storedBookmarks));
+          const parsedBookmarks = JSON.parse(storedBookmarks);
+          // Sort bookmarks by post.date in descending order (newest first)
+          const sortedBookmarks = parsedBookmarks.sort((a, b) => new Date(b.date) - new Date(a.date));
+          setBookmarks(sortedBookmarks);
         }
       } catch (error) {
         console.error('Failed to load bookmarks:', error);
@@ -26,23 +29,55 @@ const BookmarkScreen = ({ navigation }) => {
     loadBookmarks();
   }, []);
 
-  // Render each bookmarked post
-  const renderBookmark = ({ item }) => (
+  const renderBookmark = ({ item: post }) => (
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('Blog', {
-          post: item, // Passing the bookmarked post to the BlogScreen
+          post, // Passing the post data to BlogScreen
         })
-      }
-    >
-      <View style={styles.bookmarkContainer}>
-        <Text style={[styles.bookmarkTitle, { color: theme.textColor }]}>
-          {item.title.rendered}
-        </Text>
-        <BookmarkBtn width={24} height={24} fill={theme.primaryColor} />
+      }>
+      <View
+        key={post.id}
+        style={[styles.bookmarkContainer, { borderBottomColor: theme.textColor }]}>
+        
+        {/* Left Column: Title, Author, and Date */}
+        <View style={styles.leftColumn}>
+         
+  
+          {/* Title */}
+          <Text style={[styles.bookmarkTitle, { color: theme.textColor }]}>
+            {post.title.rendered}
+          </Text>
+  
+          {/* Author and Date */}
+          <Text style={[styles.postAuthor, { color: theme.textColor }]}>
+            {`By ${post.author_name}\n${new Date(post.date).toLocaleDateString()}`}
+          </Text>
+        </View>
+  
+        {/* Right Column: Image and Bookmark Button */}
+        <View style={styles.rightColumn}>
+          {/* Featured Image */}
+          {post.featured_media_url && (
+            <Image
+              source={{ uri: post.featured_media_url }}
+              style={styles.bookmarkImage}
+            />
+          )}
+  
+          {/* Bookmark Button */}
+          <TouchableOpacity onPress={() => toggleBookmark(post)} style={styles.bookmarkButton}>
+            <BookmarkBtn
+              width={24}
+              height={24}
+              // fill={isBookmarked(post.id) ? theme.primaryColor : theme.textColor} // Change icon color based on bookmark state
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </TouchableOpacity>
   );
+  
 
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
@@ -136,6 +171,52 @@ const styles = StyleSheet.create({
   },
   bookmarkTitle: {
     fontSize: 18,
+  },
+  bookmarkContainer: {
+    flexDirection: 'row', // Two columns layout
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderBottomWidth: 1,
+    marginBottom: 15,
+  },
+  leftColumn: {
+    flex: 3, // Left column takes more space
+    paddingRight: 10, // Add some padding between columns
+  },
+  rightColumn: {
+    flex: 1, // Right column takes less space
+    justifyContent: 'space-between', // Space between image and bookmark icon
+    alignItems: 'center',
+  },
+  categoryContainer: {
+    paddingVertical: 3,
+    paddingHorizontal: 8,
+    borderRadius: 15,
+    marginBottom: 5,
+    alignSelf: 'flex-start',
+  },
+  categoryLabel: {
+    fontSize: 12,
+    marginBottom: 5,
+  },
+  bookmarkTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  postAuthor: {
+    fontSize: 12,
+    color: '#777',
+  },
+  bookmarkImage: {
+    width: 80, // Smaller image size for the bookmark
+    height: 80,
+    resizeMode: 'cover',
+    borderRadius: 5,
+  },
+  bookmarkButton: {
+    marginTop: 5,
   },
 });
 
