@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import { useTheme } from '../../configs/ThemeContext';
 import { fetchArticles, fetchCategories } from '../../services/api';
-import BookmarkBtn from '../../asserts/svg/BookmarkBtn'; // Import your BookmarkBtn SVG
-import BookmarkContext from '../../context/BookmarkProvider'; // Import Bookmark context
+import BookmarkBtn from '../../asserts/svg/BookmarkBtn'; // Your custom SVG
+import BookmarkContext from '../../context/BookmarkProvider'; // Bookmark context
 
 const ForYouScreen = ({ navigation }) => {
   const { getTheme } = useTheme();
@@ -20,7 +20,7 @@ const ForYouScreen = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState({});
   const [loading, setLoading] = useState(true);
-  const [isError, setIsError] = useState(false);  // New state to track error
+  const [isError, setIsError] = useState(false);
 
   // Access BookmarkContext
   const { toggleBookmark, isBookmarked } = useContext(BookmarkContext);
@@ -32,12 +32,12 @@ const ForYouScreen = ({ navigation }) => {
         const sortedPosts = fetchedArticles.sort((a, b) =>
           a.title.rendered.localeCompare(b.title.rendered),
         );
-        const postsWithMediaAndAuthor = sortedPosts.map(post => ({
+        const postsWithDetails = sortedPosts.map(post => ({
           ...post,
           featured_media_url: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '',
           author_name: post._embedded?.author?.[0]?.name || 'Unknown Author',
         }));
-        setPosts(postsWithMediaAndAuthor);
+        setPosts(postsWithDetails);
 
         const categoriesResponse = await fetchCategories();
         const categoriesMap = categoriesResponse.reduce((map, category) => {
@@ -47,7 +47,7 @@ const ForYouScreen = ({ navigation }) => {
         setCategories(categoriesMap);
       } catch (error) {
         console.error('Error fetching articles or categories:', error);
-        setIsError(true);  // Set error state to true if there is an issue
+        setIsError(true);
       } finally {
         setLoading(false);
       }
@@ -58,56 +58,39 @@ const ForYouScreen = ({ navigation }) => {
 
   const renderPost = ({ item: post }) => (
     <TouchableOpacity
-      onPress={() =>
-        navigation.navigate('Blog', {
-          post, // Passing the post data to BlogScreen
-        })
-      }>
-      <View
-        key={post.id}
-        style={[styles.postContainer, { borderBottomColor: theme.textColor }]}>
-        
-        {/* Category */}
-      
-          <View
-            style={[
-              styles.categoryContainer,
-              { backgroundColor: theme.buttonColor },
-            ]}>
-            <Text style={[styles.categoryLabel, { color: theme.textColor }]}>
-              {categories[post.categories[0]]}
-            </Text>
-          </View>
-        
-        {/* Title */}
+      onPress={() => navigation.navigate('Blog', { post })}
+    >
+      <View style={[styles.postContainer, { borderBottomColor: theme.textColor }]}>
+        <View style={[styles.categoryContainer, { backgroundColor: theme.buttonColor }]}>
+          <Text style={[styles.categoryLabel, { color: theme.textColor }]}>
+            {categories[post.categories[0]]}
+          </Text>
+        </View>
+
         <Text style={[styles.postTitle, { color: theme.textColor }]}>
           {post.title.rendered}
         </Text>
-        
-        {/* Featured Image */}
+
         {post.featured_media_url && (
           <Image
             source={{ uri: post.featured_media_url }}
             style={styles.postImage}
           />
         )}
-        
-        {/* Author and Date */}
+
         <View style={styles.postInfoContainer}>
-  <Text style={[styles.postAuthor, { color: theme.textColor }]}>
-    {`By ${post.author_name}\n${new Date(post.date).toLocaleDateString()}`}
-  </Text>
+          <Text style={[styles.postAuthor, { color: theme.textColor }]}>
+            {`By ${post.author_name}\n${new Date(post.date).toLocaleDateString()}`}
+          </Text>
 
-  {/* Bookmark Button */}
-  <TouchableOpacity onPress={() => toggleBookmark(post)} style={styles.bookmarkButton}>
-    <BookmarkBtn
-      width={24}
-      height={24}
-      fill={isBookmarked(post.id) ? theme.primaryColor : theme.textColor} // Change icon color based on bookmark state
-    />
-  </TouchableOpacity>
-</View>
-
+          <TouchableOpacity onPress={() => toggleBookmark(post)} style={styles.bookmarkButton}>
+            <BookmarkBtn
+              width={24}
+              height={24}
+              fill={isBookmarked(post.id) ? theme.primaryColor : theme.textColor}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -151,7 +134,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Makes the background darker
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   loadingText: {
     marginTop: 10,
@@ -172,12 +155,12 @@ const styles = StyleSheet.create({
   },
   postInfoContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between', // To push the bookmark button to the right
-    alignItems: 'center', // Align items vertically in the center
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 10,
   },
   bookmarkButton: {
-    marginLeft: 10, // Add some spacing between text and button
+    marginLeft: 10,
   },
   categoryLabel: {
     fontSize: 14,
@@ -205,10 +188,6 @@ const styles = StyleSheet.create({
   postAuthor: {
     fontSize: 12,
     color: '#777',
-  },
-  bookmarkButton: {
-    alignSelf: 'flex-end',
-    marginTop: 10,
   },
 });
 
