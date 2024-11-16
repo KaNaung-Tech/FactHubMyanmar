@@ -6,6 +6,7 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
+  ToastAndroid,
 } from 'react-native';
 import { ProgressBar } from '@react-native-community/progress-bar-android'; // Community Progress Bar
 import RenderHtml from 'react-native-render-html';
@@ -17,6 +18,7 @@ import BookmarkContext from '../../context/BookmarkProvider';
 // Import your custom SVG icons or vector icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import BookmarkBtn from '../../asserts/svg/BookmarkBtn';
 
 const BlogScreen = ({ route, navigation }) => {
   const { getTheme } = useTheme();
@@ -43,6 +45,8 @@ const BlogScreen = ({ route, navigation }) => {
   // Handle bookmark toggle
   const handleBookmarkToggle = () => {
     toggleBookmark(post); // Toggle the bookmark state
+    console.log('Bookmark state:', isBookmarked(post.id)); // Log the bookmark state
+    ToastAndroid.show('Bookmark toggled', ToastAndroid.SHORT);
   };
 
   const source = {
@@ -51,21 +55,16 @@ const BlogScreen = ({ route, navigation }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      {/* Top Navigation Bar with Back and Bookmark Icons */}
+
       <View style={styles.navBar}>
-        {/* Back Button */}
+      
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.navButton}>
           <MaterialIcons name='keyboard-backspace' size={30} color={theme.textColor} />
         </TouchableOpacity>
 
-        {/* Bookmark Button */}
-        <TouchableOpacity onPress={handleBookmarkToggle} style={styles.navButton}>
-          <MaterialCommunityIcons
-            name={isBookmarked(post.id) ? 'bookmark' : 'bookmark-outline'}
-            size={30}
-            color={isBookmarked(post.id) ? theme.primaryColor : theme.textColor} // Toggle the icon based on bookmark state
-          />
-        </TouchableOpacity>
+       
+            <BookmarkBtn width={30} height={30} fill={isBookmarked(post.id)? theme.primaryColor:'none'} isBookmarked={isBookmarked(post.id)} />
+         
       </View>
 
       {/* Progress Bar */}

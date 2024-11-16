@@ -3,25 +3,17 @@ import { Svg, Path } from 'react-native-svg';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const BookmarkBtn = () => {
-  const [bookmarked, setBookmarked] = useState(false);
-  const navigation = useNavigation();
-
-  const handleClick = () => {
-    setBookmarked(!bookmarked);
-    if (!bookmarked) {
-      navigation.navigate('BookmarkScreen');
-    }
-  };
+const BookmarkBtn = ({width, height, fill, onPress, isBookmarked}) => {
+ 
 
   return (
-    <TouchableOpacity onPress={handleClick}>
-      {bookmarked ? (
+    <TouchableOpacity onPress={onPress}>
+      {isBookmarked ? (
         <Svg
-          width="20"
-          height="20"
+          width={width}
+          height={height}
           viewBox="0 0 20 20"
-          fill="none"
+          fill={fill}
           xmlns="http://www.w3.org/2000/svg">
           <Path
             fillRule="evenodd"
@@ -32,10 +24,10 @@ const BookmarkBtn = () => {
         </Svg>
       ) : (
         <Svg
-          width="14"
-          height="18"
+          width={width}
+          height={height}
           viewBox="0 0 14 18"
-          fill="none"
+          fill={fill}
           xmlns="http://www.w3.org/2000/svg">
           <Path
             d="M4.71434 7.28571H9.28577M7.00005 5V9.57143M2.71434 1H11.2858C12.0748 1 12.7143 1.67158 12.7143 2.5V17L7.00005 13L1.28577 17V2.5C1.28577 1.67158 1.92536 1 2.71434 1Z"

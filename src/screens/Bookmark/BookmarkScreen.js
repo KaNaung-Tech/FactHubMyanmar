@@ -39,8 +39,8 @@ const BookmarkScreen = ({ navigation }) => {
           {post.featured_media_url && (
             <Image source={{ uri: post.featured_media_url }} style={styles.bookmarkImage} />
           )}
-          <TouchableOpacity onPress={() => toggleBookmark(post)} style={styles.bookmarkButton}>
-            <BookmarkBtn width={24} height={24} fill={isBookmarked(post.id) ? theme.primaryColor : theme.textColor} />
+          <TouchableOpacity style={styles.bookmarkButton}>
+            <BookmarkBtn width={24} height={24} fill={theme.primaryColor} isBookmarked={true} />
           </TouchableOpacity>
         </View>
       </View>
@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
   postAuthor: {
     fontSize: 12,
     color: '#777',
+    marginTop:10,
   },
   bookmarkImage: {
     width: 80,
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   bookmarkButton: {
-    marginTop: 5,
+    marginTop: 10,
   },
 });
 

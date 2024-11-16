@@ -83,11 +83,12 @@ const ForYouScreen = ({ navigation }) => {
             {`By ${post.author_name}\n${new Date(post.date).toLocaleDateString()}`}
           </Text>
 
-          <TouchableOpacity onPress={() => toggleBookmark(post)} style={styles.bookmarkButton}>
+          <TouchableOpacity style={styles.bookmarkButton}>
             <BookmarkBtn
               width={24}
               height={24}
-              fill={isBookmarked(post.id) ? theme.primaryColor : theme.textColor}
+              fill={isBookmarked(post.id) ? theme.primaryColor : 'none'}
+              isBookmarked={isBookmarked(post.id)}
             />
           </TouchableOpacity>
         </View>
@@ -161,6 +162,7 @@ const styles = StyleSheet.create({
   },
   bookmarkButton: {
     marginLeft: 10,
+    marginTop:10
   },
   categoryLabel: {
     fontSize: 14,
@@ -188,6 +190,7 @@ const styles = StyleSheet.create({
   postAuthor: {
     fontSize: 12,
     color: '#777',
+    marginTop:5
   },
 });
 

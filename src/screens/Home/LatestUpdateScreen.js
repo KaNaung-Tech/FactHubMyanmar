@@ -103,7 +103,8 @@ const LatestUpdateScreen = ({ navigation }) => {
             <BookmarkBtn
               width={24}
               height={24}
-              fill={isBookmarked(post.id) ? theme.primaryColor : theme.textColor} // Change icon color based on bookmark state
+              fill={isBookmarked(post.id) ? theme.primaryColor : 'none'} 
+              isBookmarked={isBookmarked(post.id)}
             />
           </TouchableOpacity>
         </View>
@@ -177,6 +178,7 @@ const styles = StyleSheet.create({
   },
   bookmarkButton: {
     marginLeft: 10, // Add some spacing between text and button
+    marginTop:10
   },
   categoryLabel: {
     fontSize: 14,
